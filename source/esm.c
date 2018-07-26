@@ -1,7 +1,7 @@
 /** @file esm.c 
 *   @brief Esm Driver Source File
-*   @date 25.July.2013
-*   @version 03.06.00
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 *   This file contains:
 *   - API Functions
@@ -9,7 +9,40 @@
 *   which are relevant for the Esm driver.
 */
 
-/* (c) Texas Instruments 2009-2013, All rights reserved. */
+/* 
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
+* 
+* 
+*  Redistribution and use in source and binary forms, with or without 
+*  modification, are permitted provided that the following conditions 
+*  are met:
+*
+*    Redistributions of source code must retain the above copyright 
+*    notice, this list of conditions and the following disclaimer.
+*
+*    Redistributions in binary form must reproduce the above copyright
+*    notice, this list of conditions and the following disclaimer in the 
+*    documentation and/or other materials provided with the   
+*    distribution.
+*
+*    Neither the name of Texas Instruments Incorporated nor the names of
+*    its contributors may be used to endorse or promote products derived
+*    from this software without specific prior written permission.
+*
+*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+*  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+*  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+*  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+*  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+*  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+*  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+*  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*/
+
 
 /* USER CODE BEGIN (0) */
 /* USER CODE END */
@@ -32,7 +65,9 @@
 
 /* USER CODE BEGIN (2) */
 /* USER CODE END */
-
+/* SourceId : ESM_SourceId_001 */
+/* DesignId : ESM_DesignId_001 */
+/* Requirements : HL_SR4 */
 void esmInit(void)
 {
 /* USER CODE BEGIN (3) */
@@ -52,9 +87,6 @@ void esmInit(void)
     esmREG->SSR2  = 0xFFFFFFFFU;
     esmREG->SR1[2U] = 0xFFFFFFFFU;
     esmREG->SR4[0U] = 0xFFFFFFFFU;
-    esmREG->SR4[1U] = 0xFFFFFFFFU;
-    esmREG->ESTATUS5EMU  = 0xFFFFFFFFU;
-    esmREG->SR4[2U] = 0xFFFFFFFFU;
 
     /** - Setup LPC preload */
     esmREG->LTCPR = 16384U - 1U;
@@ -74,205 +106,205 @@ void esmInit(void)
     esmREG->ILCR4 = 0xFFFFFFFFU;
 
     /** - Set interrupt level */
-    esmREG->ILSR1 = (0U << 31U)
-                       | (0U << 30U)
-                       | (0U << 29U)
-                       | (0U << 28U)
-                       | (0U << 27U)
-                       | (0U << 26U)
-                       | (0U << 25U)
-                       | (0U << 24U)
-                       | (0U << 23U)
-                       | (0U << 22U)
-                       | (0U << 21U)
-                       | (0U << 20U)
-                       | (0U << 19U)
-                       | (0U << 18U)
-                       | (0U << 17U)
-                       | (0U << 16U)
-                       | (0U << 15U)
-                       | (0U << 14U)
-                       | (0U << 13U)
-                       | (0U << 12U)
-                       | (0U << 11U)
-                       | (0U << 10U)
-                       | (0U <<  9U)
-                       | (0U <<  8U)
-                       | (0U <<  7U)
-                       | (0U <<  6U)
-                       | (0U <<  5U)
-                       | (0U <<  4U)
-                       | (0U <<  3U)
-                       | (0U <<  2U)
-                       | (0U <<  1U)
-                       | (0U);
+    esmREG->ILSR1 = (uint32)((uint32)0U << 31U)
+                  | (uint32)((uint32)0U << 30U)
+                  | (uint32)((uint32)0U << 29U)
+                  | (uint32)((uint32)0U << 28U)
+                  | (uint32)((uint32)0U << 27U)
+                  | (uint32)((uint32)0U << 26U)
+                  | (uint32)((uint32)0U << 25U)
+                  | (uint32)((uint32)0U << 24U)
+                  | (uint32)((uint32)0U << 23U)
+                  | (uint32)((uint32)0U << 22U)
+                  | (uint32)((uint32)0U << 21U)
+                  | (uint32)((uint32)0U << 20U)
+                  | (uint32)((uint32)0U << 19U)
+                  | (uint32)((uint32)0U << 18U)
+                  | (uint32)((uint32)0U << 17U)
+                  | (uint32)((uint32)0U << 16U)
+                  | (uint32)((uint32)0U << 15U)
+                  | (uint32)((uint32)0U << 14U)
+                  | (uint32)((uint32)0U << 13U)
+                  | (uint32)((uint32)0U << 12U)
+                  | (uint32)((uint32)0U << 11U)
+                  | (uint32)((uint32)0U << 10U)
+                  | (uint32)((uint32)0U <<  9U)
+                  | (uint32)((uint32)0U <<  8U)
+                  | (uint32)((uint32)0U <<  7U)
+                  | (uint32)((uint32)0U <<  6U)
+                  | (uint32)((uint32)0U <<  5U)
+                  | (uint32)((uint32)0U <<  4U)
+                  | (uint32)((uint32)0U <<  3U)
+                  | (uint32)((uint32)0U <<  2U)
+                  | (uint32)((uint32)0U <<  1U)
+                  | (uint32)((uint32)0U <<  0U);
 
-    esmREG->ILSR4 = (0U << 31U)
-                       | (0U << 30U)
-                       | (0U << 29U)
-                       | (0U << 28U)
-                       | (0U << 27U)
-                       | (0U << 26U)
-                       | (0U << 25U)
-                       | (0U << 24U)
-                       | (0U << 23U)
-                       | (0U << 22U)
-                       | (0U << 21U)
-                       | (0U << 20U)
-                       | (0U << 19U)
-                       | (0U << 18U)
-                       | (0U << 17U)
-                       | (0U << 16U)
-                       | (0U << 15U)
-                       | (0U << 14U)
-                       | (0U << 13U)
-                       | (0U << 12U)
-                       | (0U << 11U)
-                       | (0U << 10U)
-                       | (0U <<  9U)
-                       | (0U <<  8U)
-                       | (0U <<  7U)
-                       | (0U <<  6U)
-                       | (0U <<  5U)
-                       | (0U <<  4U)
-                       | (0U <<  3U)
-                       | (0U <<  2U)
-                       | (0U <<  1U)
-                       | (0U);
+    esmREG->ILSR4 = (uint32)((uint32)0U << 31U)
+                  | (uint32)((uint32)0U << 30U)
+                  | (uint32)((uint32)0U << 29U)
+                  | (uint32)((uint32)0U << 28U)
+                  | (uint32)((uint32)0U << 27U)
+                  | (uint32)((uint32)0U << 26U)
+                  | (uint32)((uint32)0U << 25U)
+                  | (uint32)((uint32)0U << 24U)
+                  | (uint32)((uint32)0U << 23U)
+                  | (uint32)((uint32)0U << 22U)
+                  | (uint32)((uint32)0U << 21U)
+                  | (uint32)((uint32)0U << 20U)
+                  | (uint32)((uint32)0U << 19U)
+                  | (uint32)((uint32)0U << 18U)
+                  | (uint32)((uint32)0U << 17U)
+                  | (uint32)((uint32)0U << 16U)
+                  | (uint32)((uint32)0U << 15U)
+                  | (uint32)((uint32)0U << 14U)
+                  | (uint32)((uint32)0U << 13U)
+                  | (uint32)((uint32)0U << 12U)
+                  | (uint32)((uint32)0U << 11U)
+                  | (uint32)((uint32)0U << 10U)
+                  | (uint32)((uint32)0U <<  9U)
+                  | (uint32)((uint32)0U <<  8U)
+                  | (uint32)((uint32)0U <<  7U)
+                  | (uint32)((uint32)0U <<  6U)
+                  | (uint32)((uint32)0U <<  5U)
+                  | (uint32)((uint32)0U <<  4U)
+                  | (uint32)((uint32)0U <<  3U)
+                  | (uint32)((uint32)0U <<  2U)
+                  | (uint32)((uint32)0U <<  1U)
+                  | (uint32)((uint32)0U <<  0U);
 
     /** - Enable error pin channels */
-    esmREG->EEPAPR1 = (0U << 31U)
-                      | (0U << 30U)
-                      | (0U << 29U)
-                      | (0U << 28U)
-                      | (0U << 27U)
-                      | (0U << 26U)
-                      | (0U << 25U)
-                      | (0U << 24U)
-                      | (0U << 23U)
-                      | (0U << 22U)
-                      | (0U << 21U)
-                      | (0U << 20U)
-                      | (0U << 19U)
-                      | (0U << 18U)
-                      | (0U << 17U)
-                      | (0U << 16U)
-                      | (0U << 15U)
-                      | (0U << 14U)
-                      | (0U << 13U)
-                      | (0U << 12U)
-                      | (0U << 11U)
-                      | (0U << 10U)
-                      | (0U <<  9U)
-                      | (0U <<  8U)
-                      | (0U <<  7U)
-                      | (0U <<  6U)
-                      | (0U <<  5U)
-                      | (0U <<  4U)
-                      | (0U <<  3U)
-                      | (0U <<  2U)
-                      | (0U <<  1U)
-                      | (0U);
+    esmREG->EEPAPR1 = (uint32)((uint32)0U << 31U)
+                    | (uint32)((uint32)0U << 30U)
+                    | (uint32)((uint32)0U << 29U)
+                    | (uint32)((uint32)0U << 28U)
+                    | (uint32)((uint32)0U << 27U)
+                    | (uint32)((uint32)0U << 26U)
+                    | (uint32)((uint32)0U << 25U)
+                    | (uint32)((uint32)0U << 24U)
+                    | (uint32)((uint32)0U << 23U)
+                    | (uint32)((uint32)0U << 22U)
+                    | (uint32)((uint32)0U << 21U)
+                    | (uint32)((uint32)0U << 20U)
+                    | (uint32)((uint32)0U << 19U)
+                    | (uint32)((uint32)0U << 18U)
+                    | (uint32)((uint32)0U << 17U)
+                    | (uint32)((uint32)0U << 16U)
+                    | (uint32)((uint32)0U << 15U)
+                    | (uint32)((uint32)0U << 14U)
+                    | (uint32)((uint32)0U << 13U)
+                    | (uint32)((uint32)0U << 12U)
+                    | (uint32)((uint32)0U << 11U)
+                    | (uint32)((uint32)0U << 10U)
+                    | (uint32)((uint32)0U <<  9U)
+                    | (uint32)((uint32)0U <<  8U)
+                    | (uint32)((uint32)0U <<  7U)
+                    | (uint32)((uint32)0U <<  6U)
+                    | (uint32)((uint32)0U <<  5U)
+                    | (uint32)((uint32)0U <<  4U)
+                    | (uint32)((uint32)0U <<  3U)
+                    | (uint32)((uint32)0U <<  2U)
+                    | (uint32)((uint32)0U <<  1U)
+                    | (uint32)((uint32)0U <<  0U);
 
-    esmREG->IEPSR4 = (0U << 31U)
-                      | (0U << 30U)
-                      | (0U << 29U)
-                      | (0U << 28U)
-                      | (0U << 27U)
-                      | (0U << 26U)
-                      | (0U << 25U)
-                      | (0U << 24U)
-                      | (0U << 23U)
-                      | (0U << 22U)
-                      | (0U << 21U)
-                      | (0U << 20U)
-                      | (0U << 19U)
-                      | (0U << 18U)
-                      | (0U << 17U)
-                      | (0U << 16U)
-                      | (0U << 15U)
-                      | (0U << 14U)
-                      | (0U << 13U)
-                      | (0U << 12U)
-                      | (0U << 11U)
-                      | (0U << 10U)
-                      | (0U <<  9U)
-                      | (0U <<  8U)
-                      | (0U <<  7U)
-                      | (0U <<  6U)
-                      | (0U <<  5U)
-                      | (0U <<  4U)
-                      | (0U <<  3U)
-                      | (0U <<  2U)
-                      | (0U <<  1U)
-                      | (0U);
+    esmREG->IEPSR4 = (uint32)((uint32)0U << 31U)
+                   | (uint32)((uint32)0U << 30U)
+                   | (uint32)((uint32)0U << 29U)
+                   | (uint32)((uint32)0U << 28U)
+                   | (uint32)((uint32)0U << 27U)
+                   | (uint32)((uint32)0U << 26U)
+                   | (uint32)((uint32)0U << 25U)
+                   | (uint32)((uint32)0U << 24U)
+                   | (uint32)((uint32)0U << 23U)
+                   | (uint32)((uint32)0U << 22U)
+                   | (uint32)((uint32)0U << 21U)
+                   | (uint32)((uint32)0U << 20U)
+                   | (uint32)((uint32)0U << 19U)
+                   | (uint32)((uint32)0U << 18U)
+                   | (uint32)((uint32)0U << 17U)
+                   | (uint32)((uint32)0U << 16U)
+                   | (uint32)((uint32)0U << 15U)
+                   | (uint32)((uint32)0U << 14U)
+                   | (uint32)((uint32)0U << 13U)
+                   | (uint32)((uint32)0U << 12U)
+                   | (uint32)((uint32)0U << 11U)
+                   | (uint32)((uint32)0U << 10U)
+                   | (uint32)((uint32)0U <<  9U)
+                   | (uint32)((uint32)0U <<  8U)
+                   | (uint32)((uint32)0U <<  7U)
+                   | (uint32)((uint32)0U <<  6U)
+                   | (uint32)((uint32)0U <<  5U)
+                   | (uint32)((uint32)0U <<  4U)
+                   | (uint32)((uint32)0U <<  3U)
+                   | (uint32)((uint32)0U <<  2U)
+                   | (uint32)((uint32)0U <<  1U)
+                   | (uint32)((uint32)0U <<  0U);
 
     /** - Enable interrupts */
-    esmREG->IESR1 = (0U << 31U)
-                       | (0U << 30U)
-                       | (0U << 29U)
-                       | (0U << 28U)
-                       | (0U << 27U)
-                       | (0U << 26U)
-                       | (0U << 25U)
-                       | (0U << 24U)
-                       | (0U << 23U)
-                       | (0U << 22U)
-                       | (0U << 21U)
-                       | (0U << 20U)
-                       | (0U << 19U)
-                       | (0U << 18U)
-                       | (0U << 17U)
-                       | (0U << 16U)
-                       | (0U << 15U)
-                       | (0U << 14U)
-                       | (0U << 13U)
-                       | (0U << 12U)
-                       | (0U << 11U)
-                       | (0U << 10U)
-                       | (0U <<  9U)
-                       | (0U <<  8U)
-                       | (0U <<  7U)
-                       | (0U <<  6U)
-                       | (0U <<  5U)
-                       | (0U <<  4U)
-                       | (0U <<  3U)
-                       | (0U <<  2U)
-                       | (0U <<  1U)
-                       | (0U);
+    esmREG->IESR1 = (uint32)((uint32)0U << 31U)
+                  | (uint32)((uint32)0U << 30U)
+                  | (uint32)((uint32)0U << 29U)
+                  | (uint32)((uint32)0U << 28U)
+                  | (uint32)((uint32)0U << 27U)
+                  | (uint32)((uint32)0U << 26U)
+                  | (uint32)((uint32)0U << 25U)
+                  | (uint32)((uint32)0U << 24U)
+                  | (uint32)((uint32)0U << 23U)
+                  | (uint32)((uint32)0U << 22U)
+                  | (uint32)((uint32)0U << 21U)
+                  | (uint32)((uint32)0U << 20U)
+                  | (uint32)((uint32)0U << 19U)
+                  | (uint32)((uint32)0U << 18U)
+                  | (uint32)((uint32)0U << 17U)
+                  | (uint32)((uint32)0U << 16U)
+                  | (uint32)((uint32)0U << 15U)
+                  | (uint32)((uint32)0U << 14U)
+                  | (uint32)((uint32)0U << 13U)
+                  | (uint32)((uint32)0U << 12U)
+                  | (uint32)((uint32)0U << 11U)
+                  | (uint32)((uint32)0U << 10U)
+                  | (uint32)((uint32)0U <<  9U)
+                  | (uint32)((uint32)0U <<  8U)
+                  | (uint32)((uint32)0U <<  7U)
+                  | (uint32)((uint32)0U <<  6U)
+                  | (uint32)((uint32)0U <<  5U)
+                  | (uint32)((uint32)0U <<  4U)
+                  | (uint32)((uint32)0U <<  3U)
+                  | (uint32)((uint32)0U <<  2U)
+                  | (uint32)((uint32)0U <<  1U)
+                  | (uint32)((uint32)0U <<  0U);
 
-    esmREG->IESR4 = (0U << 31U)
-                       | (0U << 30U)
-                       | (0U << 29U)
-                       | (0U << 28U)
-                       | (0U << 27U)
-                       | (0U << 26U)
-                       | (0U << 25U)
-                       | (0U << 24U)
-                       | (0U << 23U)
-                       | (0U << 22U)
-                       | (0U << 21U)
-                       | (0U << 20U)
-                       | (0U << 19U)
-                       | (0U << 18U)
-                       | (0U << 17U)
-                       | (0U << 16U)
-                       | (0U << 15U)
-                       | (0U << 14U)
-                       | (0U << 13U)
-                       | (0U << 12U)
-                       | (0U << 11U)
-                       | (0U << 10U)
-                       | (0U <<  9U)
-                       | (0U <<  8U)
-                       | (0U <<  7U)
-                       | (0U <<  6U)
-                       | (0U <<  5U)
-                       | (0U <<  4U)
-                       | (0U <<  3U)
-                       | (0U <<  2U)
-                       | (0U <<  1U)
-                       | (0U);
+    esmREG->IESR4 = (uint32)((uint32)0U << 31U)
+                  | (uint32)((uint32)0U << 30U)
+                  | (uint32)((uint32)0U << 29U)
+                  | (uint32)((uint32)0U << 28U)
+                  | (uint32)((uint32)0U << 27U)
+                  | (uint32)((uint32)0U << 26U)
+                  | (uint32)((uint32)0U << 25U)
+                  | (uint32)((uint32)0U << 24U)
+                  | (uint32)((uint32)0U << 23U)
+                  | (uint32)((uint32)0U << 22U)
+                  | (uint32)((uint32)0U << 21U)
+                  | (uint32)((uint32)0U << 20U)
+                  | (uint32)((uint32)0U << 19U)
+                  | (uint32)((uint32)0U << 18U)
+                  | (uint32)((uint32)0U << 17U)
+                  | (uint32)((uint32)0U << 16U)
+                  | (uint32)((uint32)0U << 15U)
+                  | (uint32)((uint32)0U << 14U)
+                  | (uint32)((uint32)0U << 13U)
+                  | (uint32)((uint32)0U << 12U)
+                  | (uint32)((uint32)0U << 11U)
+                  | (uint32)((uint32)0U << 10U)
+                  | (uint32)((uint32)0U <<  9U)
+                  | (uint32)((uint32)0U <<  8U)
+                  | (uint32)((uint32)0U <<  7U)
+                  | (uint32)((uint32)0U <<  6U)
+                  | (uint32)((uint32)0U <<  5U)
+                  | (uint32)((uint32)0U <<  4U)
+                  | (uint32)((uint32)0U <<  3U)
+                  | (uint32)((uint32)0U <<  2U)
+                  | (uint32)((uint32)0U <<  1U)
+                  | (uint32)((uint32)0U <<  0U);
 
 /* USER CODE BEGIN (4) */
 /* USER CODE END */
@@ -286,6 +318,9 @@ void esmInit(void)
 *
 *   Returns the error status.
 */
+/* SourceId : ESM_SourceId_002 */
+/* DesignId : ESM_DesignId_002 */
+/* Requirements : HL_SR5 */
 uint32 esmError(void)
 {
     uint32 status;
@@ -309,6 +344,9 @@ uint32 esmError(void)
 *
 *   Enable Group 1 Channels Error Signals propagation to the error pin.
 */
+/* SourceId : ESM_SourceId_003 */
+/* DesignId : ESM_DesignId_003 */
+/* Requirements : HL_SR6 */
 void esmEnableError(uint64 channels)
 {
 /* USER CODE BEGIN (7) */
@@ -329,6 +367,9 @@ void esmEnableError(uint64 channels)
 *
 *   Disable Group 1 Channels Error Signals propagation to the error pin.
 */
+/* SourceId : ESM_SourceId_004 */
+/* DesignId : ESM_DesignId_004 */
+/* Requirements : HL_SR7 */
 void esmDisableError(uint64 channels)
 {
 /* USER CODE BEGIN (9) */
@@ -347,6 +388,9 @@ void esmDisableError(uint64 channels)
 *
 *   Trigger error pin reset and switch back to normal operation.
 */
+/* SourceId : ESM_SourceId_005 */
+/* DesignId : ESM_DesignId_005 */
+/* Requirements : HL_SR8 */
 void esmTriggerErrorPinReset(void)
 {
 /* USER CODE BEGIN (11) */
@@ -364,6 +408,9 @@ void esmTriggerErrorPinReset(void)
 *
 *   Activates normal operation mode.
 */
+/* SourceId : ESM_SourceId_006 */
+/* DesignId : ESM_DesignId_006 */
+/* Requirements : HL_SR9 */
 void esmActivateNormalOperation(void)
 {
 /* USER CODE BEGIN (13) */
@@ -383,6 +430,9 @@ void esmActivateNormalOperation(void)
 *
 *   Enable Group 1 Channels Interrupts.
 */
+/* SourceId : ESM_SourceId_007 */
+/* DesignId : ESM_DesignId_007 */
+/* Requirements : HL_SR10 */
 void esmEnableInterrupt(uint64 channels)
 {
 /* USER CODE BEGIN (15) */
@@ -403,6 +453,9 @@ void esmEnableInterrupt(uint64 channels)
 *
 *   Disable Group 1 Channels Interrupts.
 */
+/* SourceId : ESM_SourceId_008 */
+/* DesignId : ESM_DesignId_008 */
+/* Requirements : HL_SR11 */
 void esmDisableInterrupt(uint64 channels)
 {
 /* USER CODE BEGIN (17) */
@@ -425,14 +478,17 @@ void esmDisableInterrupt(uint64 channels)
 *
 *   Set Group 1 Channels Interrupts levels.
 */
+/* SourceId : ESM_SourceId_009 */
+/* DesignId : ESM_DesignId_009 */
+/* Requirements : HL_SR12 */
 void esmSetInterruptLevel(uint64 channels, uint64 flags)
 {
 /* USER CODE BEGIN (19) */
 /* USER CODE END */
 
-    esmREG->ILCR4 = (uint32)(((channels & (~flags)) >> 32U) & 0xFFFFFFFU);
+    esmREG->ILCR4 = (uint32)(((channels & (~flags)) >> 32U) & 0xFFFFFFFFU);
     esmREG->ILSR4 = (uint32)(((channels & flags) >> 32U) & 0xFFFFFFFFU);
-    esmREG->ILCR1 = (uint32)((channels & (~flags)) & 0xFFFFFFFU);
+    esmREG->ILCR1 = (uint32)((channels & (~flags)) & 0xFFFFFFFFU);
     esmREG->ILSR1 = (uint32)((channels & flags) & 0xFFFFFFFFU);
 
 /* USER CODE BEGIN (20) */
@@ -448,13 +504,19 @@ void esmSetInterruptLevel(uint64 channels, uint64 flags)
 *
 *   Clear Group error status.
 */
+/* SourceId : ESM_SourceId_010 */
+/* DesignId : ESM_DesignId_010 */
+/* Requirements : HL_SR13 */
 void esmClearStatus(uint32 group, uint64 channels)
 {
 /* USER CODE BEGIN (21) */
 /* USER CODE END */
 
-    esmREG->SR4[group] = (uint32)((channels >> 32U) & 0xFFFFFFFFU);
     esmREG->SR1[group] = (uint32)(channels & 0xFFFFFFFFU);
+	if(group == 0U)
+	{
+	    esmREG->SR4[group] = (uint32)((channels >> 32U) & 0xFFFFFFFFU);
+	}
 
 /* USER CODE BEGIN (22) */
 /* USER CODE END */
@@ -468,12 +530,14 @@ void esmClearStatus(uint32 group, uint64 channels)
 *
 *   Clear Group 2 error status buffer.
 */
+/* SourceId : ESM_SourceId_011 */
+/* DesignId : ESM_DesignId_011 */
+/* Requirements : HL_SR14 */
 void esmClearStatusBuffer(uint64 channels)
 {
 /* USER CODE BEGIN (23) */
 /* USER CODE END */
 
-    esmREG->ESTATUS5EMU = (uint32)((channels >> 32U) & 0xFFFFFFFFU);
     esmREG->SSR2 = (uint32)(channels & 0xFFFFFFFFU);
 
 /* USER CODE BEGIN (24) */
@@ -488,6 +552,9 @@ void esmClearStatusBuffer(uint64 channels)
 *
 *   Set counter preload value.
 */
+/* SourceId : ESM_SourceId_012 */
+/* DesignId : ESM_DesignId_012 */
+/* Requirements : HL_SR15 */
 void esmSetCounterPreloadValue(uint32 value)
 {
 /* USER CODE BEGIN (25) */
@@ -510,16 +577,26 @@ void esmSetCounterPreloadValue(uint32 value)
 *
 *   Returns the channels status of selected group.
 */
+/* SourceId : ESM_SourceId_013 */
+/* DesignId : ESM_DesignId_013 */
+/* Requirements : HL_SR16 */
 uint64 esmGetStatus(uint32 group, uint64 channels)
 {
     uint64 status;
-	uint32 ESM_ESTATUS4 = esmREG->SR4[group];
-	uint32 ESM_ESTATUS1 = esmREG->SR1[group];
+	uint32 ESM_ESTATUS4, ESM_ESTATUS1;
+	if(group == 0U)
+	{
+		ESM_ESTATUS4 = esmREG->SR4[group];
+	}
+	else
+	{
+		ESM_ESTATUS4 = 0U;
+	}
+	ESM_ESTATUS1 = esmREG->SR1[group];
 
 /* USER CODE BEGIN (27) */
 /* USER CODE END */
-    /*SAFETYMCUSW 51 S MR:12.3 <APPROVED> "Needs shifting for 64-bit value" */
-    status = (((uint64)ESM_ESTATUS4 << 32U) | (uint64)ESM_ESTATUS1) & channels;
+    status = (((uint64)(ESM_ESTATUS4) << 32U) | (uint64)ESM_ESTATUS1) & channels;
 
 /* USER CODE BEGIN (28) */
 /* USER CODE END */
@@ -537,16 +614,16 @@ uint64 esmGetStatus(uint32 group, uint64 channels)
 *
 *   Returns the group 2 buffered status of selected channels.
 */
+/* SourceId : ESM_SourceId_014 */
+/* DesignId : ESM_DesignId_014 */
+/* Requirements : HL_SR17 */
 uint64 esmGetStatusBuffer(uint64 channels)
 {
     uint64 status;
-	uint32 ESM_ESTATUS5EMU = esmREG->ESTATUS5EMU;
-	uint32 ESM_SSR2 = esmREG->SSR2;
 
 /* USER CODE BEGIN (29) */
 /* USER CODE END */
-    /*SAFETYMCUSW 51 S MR:12.3 <APPROVED> "Needs shifting for 64-bit value" */
-    status = (((uint64)ESM_ESTATUS5EMU << 32U) | (uint64)ESM_SSR2) & channels;
+    status = ((uint64)esmREG->SSR2) & channels;
 
 /* USER CODE BEGIN (30) */
 /* USER CODE END */
@@ -561,6 +638,9 @@ uint64 esmGetStatusBuffer(uint64 channels)
 *
 *   Returns the ESM Self test status.
 */
+/* SourceId : ESM_SourceId_015 */
+/* DesignId : ESM_DesignId_015 */
+/* Requirements : HL_SR19 */
 esmSelfTestFlag_t esmEnterSelfTest(void)
 {
     esmSelfTestFlag_t status;
@@ -568,7 +648,9 @@ esmSelfTestFlag_t esmEnterSelfTest(void)
 /* USER CODE BEGIN (31) */
 /* USER CODE END */
 
-	if(((esmREG->EPSR & 0x1U) == 0x0U) && (esmREG->EKR == 0x0U))
+	uint32 errPinStat = esmREG->EPSR & 0x1U;
+	uint32 esmKeyReg  = esmREG->EKR;
+	if((errPinStat == 0x0U) && (esmKeyReg == 0x0U))
 	{
 	  status = esmSelfTest_NotStarted;
 	}
@@ -594,6 +676,9 @@ esmSelfTestFlag_t esmEnterSelfTest(void)
 *
 *   Returns the ESM Self test status.
 */
+/* SourceId : ESM_SourceId_016 */
+/* DesignId : ESM_DesignId_016 */
+/* Requirements : HL_SR18 */
 esmSelfTestFlag_t esmSelfTestStatus(void)
 {
     esmSelfTestFlag_t status;
@@ -638,7 +723,9 @@ esmSelfTestFlag_t esmSelfTestStatus(void)
 *   of the configuration registers to the struct pointed by config_reg
 *
 */
-
+/* SourceId : ESM_SourceId_017 */
+/* DesignId : ESM_DesignId_017 */
+/* Requirements : HL_SR20, HL_SR24 */
 void esmGetConfigValue(esm_config_reg_t *config_reg, config_value_type_t type)
 {
 	if (type == InitialValue)
@@ -654,7 +741,7 @@ void esmGetConfigValue(esm_config_reg_t *config_reg, config_value_type_t type)
 	}
 	else
 	{
-	/*SAFETYMCUSW 134 S MR:12.2 <APPROVED> "Register read back support" */
+	/*SAFETYMCUSW 134 S MR:12.2 <APPROVED> "LDRA Tool issue" */
 		config_reg->CONFIG_EEPAPR1 = esmREG->EEPAPR1;
 		config_reg->CONFIG_IESR1 = esmREG->IESR1;
 		config_reg->CONFIG_ILSR1 = esmREG->ILSR1;
@@ -674,7 +761,9 @@ void esmGetConfigValue(esm_config_reg_t *config_reg, config_value_type_t type)
 */
 #pragma CODE_STATE(esmHighInterrupt, 32)
 #pragma INTERRUPT(esmHighInterrupt, FIQ)
-
+/* SourceId : ESM_SourceId_018 */
+/* DesignId : ESM_DesignId_018 */
+/* Requirements : HL_SR21, HL_SR22 */
 void esmHighInterrupt(void)
 {
     uint32 vec = esmREG->IOFFHR - 1U;
@@ -684,27 +773,21 @@ void esmHighInterrupt(void)
 
     if (vec < 32U)
     {
-        esmREG->SR1[0U] = 1U << vec;
+        esmREG->SR1[0U] = (uint32)1U << vec;
         esmGroup1Notification(vec);
     }
     else if (vec < 64U)
     {
-        esmREG->SR1[1U] = 1U << (vec-32U);
+        esmREG->SR1[1U] = (uint32)1U << (vec-32U);
         esmGroup2Notification(vec-32U);
     }
     else if (vec < 96U)
     {
-        esmREG->SR4[0U] = 1U << (vec-64U);
+        esmREG->SR4[0U] = (uint32)1U << (vec-64U);
         esmGroup1Notification(vec-32U);
-    }
-    else if (vec < 128U)
-    {
-        esmREG->SR4[1U] = 1U << (vec-96U);
-        esmGroup2Notification(vec-64U);
     }
     else
     {
-        esmREG->SR4[1U] = 0xFFFFFFFFU;
         esmREG->SR4[0U] = 0xFFFFFFFFU;
         esmREG->SR1[1U] = 0xFFFFFFFFU;
         esmREG->SR1[0U] = 0xFFFFFFFFU;
